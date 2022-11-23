@@ -4,8 +4,7 @@ import {ProductService} from "../product.service";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.state";
 import {loadProducts, loadProductsFailure, loadProductsSuccess} from "./product.actions";
-import {catchError, from, map, Observable, of, switchMap} from "rxjs";
-import {ProductModel} from "../../shared/models/product.model";
+import {catchError, from, map, of, switchMap} from "rxjs";
 
 @Injectable()
 export class ProductEffects {
@@ -16,7 +15,7 @@ export class ProductEffects {
       ofType(loadProducts),
       switchMap(() =>
         from(this.productService.getProducts()).pipe(
-        map((products) => loadProductsSuccess({ products: products as ProductModel[] })),
+        map((products) => loadProductsSuccess({ products })),
         catchError((error) => of(loadProductsFailure({ error })))
       ))
     )

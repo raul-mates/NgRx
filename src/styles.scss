@@ -3,4 +3,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow: auto !important;
+  position: static !important;
+  background: #F0EEE4 !important;
 }

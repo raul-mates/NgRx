@@ -1,9 +1,16 @@
-<div>
-  <div>
-    <img src="" alt="">
-  </div>
+<ng-container *ngIf="products.length > 0">
+  <div class="flex-container">
+    <div class="container" *ngFor="let product of products">
+      <div style="margin: 0; padding: 0; height: 360px">
+        <img src="{{product.image}}" alt="{{product.title}}" width="360" height="360">
+      </div>
 
-  <div class="details">
-
+      <div class="details">
+        <p class="description">{{product.description}}</p>
+        <p>{{product.category}}</p>
+        <p>{{product.color}}</p>
+        <p>{{product.price.currentPrice}}</p>
+      </div>
+    </div>
   </div>
-</div>
+</ng-container>
