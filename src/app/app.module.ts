@@ -11,9 +11,11 @@ import {productReducer} from "./product/store/product.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {ProductEffects} from "./product/store/product.effects";
 import {HttpClientModule} from "@angular/common/http";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+// import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {FeatureKeys} from "./store/feature.keys";
 import { CartDropdownComponent } from './cart/cart-dropdown/cart-dropdown.component';
+import {CartEffects} from "./cart/store/cart.effects";
+import {userCartReducer} from "./cart/store/cart.reducers";
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { CartDropdownComponent } from './cart/cart-dropdown/cart-dropdown.compon
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    StoreModule.forRoot({ [FeatureKeys.productList]: productReducer }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
+    StoreModule.forRoot({
+      [FeatureKeys.productList]: productReducer,
+      [FeatureKeys.userCart]: userCartReducer
     }),
-    EffectsModule.forRoot([ProductEffects]),
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25, // Retains last 25 states
+    // }),
+    EffectsModule.forRoot([ProductEffects, CartEffects]),
     HttpClientModule
   ],
   providers: [],

@@ -1,14 +1,14 @@
 import {createReducer, Action, on} from "@ngrx/store";
 import * as UserCartActions from './cart.actions';
-import {CartModel} from "../../../shared/models/cart.model";
+import {CartModel} from "../../shared/models/cart.model";
 
-export interface State {
+export interface CartState {
   userCart: CartModel;
   error: string | null;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
-export const initialState: State = {
+export const initialState: CartState = {
   userCart: {
     numberOfItems: '',
     items: []

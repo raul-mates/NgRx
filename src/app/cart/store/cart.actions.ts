@@ -1,6 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ProductModel } from "../../../shared/models/product.model";
-import { CartModel } from "../../../shared/models/cart.model";
+import { CartModel } from "../../shared/models/cart.model";
 
 export const loadCart = createAction('[User Cart] User Cart Loaded')
 
