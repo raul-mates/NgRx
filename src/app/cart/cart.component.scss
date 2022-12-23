@@ -3,3 +3,74 @@
   color: #fff;
   cursor: pointer;
 }
+
+.cart-dropdown-container {
+  position: absolute;
+  top: 52px;
+  right: 19px;
+  background: #fff;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.cart-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+}
+
+.cart-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.number-of-items-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 55px;
+  background: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.number-of-items {
+  color: #fff;
+  font-size: 12px;
+}
+
+.checkout {
+  color: #000;
+  background: #fff;
+  border: 2px solid #000;
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #000;
+    color: #fff;
+  }
+}
+
+.total {
+  border-top: 1px solid #D3D3D3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-icon-container:hover + .cart-dropdown-container {
+  opacity: 1;
+  visibility: visible;
+}

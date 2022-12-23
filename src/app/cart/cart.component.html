@@ -1,6 +1,27 @@
 <div class="cart-icon-container">
   <ion-icon name="cart" class="cart-icon"></ion-icon>
 </div>
+
 <div class="cart-dropdown-container">
-  <app-cart-dropdown></app-cart-dropdown>
+  <div *ngIf="userCart && userCart.numberOfItems.length > 0">
+    <div *ngFor="let item of userCart.items" class="cart-wrapper">
+      <div>
+        <img src="{{item.image}}" alt="{{item.title}}" width="80">
+      </div>
+
+      <div class="cart-details">
+        <p>{{item.title}}</p>
+        <p>{{item.price.currentPrice}}</p>
+      </div>
+    </div>
+    <div class="total">
+      <p>Total:</p>
+      <p>{{cartTotal}} EUR</p>
+    </div>
+    <button class="checkout" type="button">Go to check-out</button>
+  </div>
+</div>
+
+<div class="number-of-items-container" *ngIf="userCart && +userCart.numberOfItems > 0">
+  <div class="number-of-items">{{userCart.numberOfItems}}</div>
 </div>

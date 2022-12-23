@@ -1,4 +1,5 @@
 export interface ProductModel {
+  id?: number | string;
   image: string;
   modelShot: string;
   title: string;

@@ -11,11 +11,13 @@ import {productReducer} from "./product/store/product.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {ProductEffects} from "./product/store/product.effects";
 import {HttpClientModule} from "@angular/common/http";
-// import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {FeatureKeys} from "./store/feature.keys";
-import { CartDropdownComponent } from './cart/cart-dropdown/cart-dropdown.component';
 import {CartEffects} from "./cart/store/cart.effects";
 import {userCartReducer} from "./cart/store/cart.reducers";
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {userCartReducer} from "./cart/store/cart.reducers";
     TheNavComponent,
     CartComponent,
     ProductComponent,
-    CartDropdownComponent,
+    ProductFormComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,11 +36,12 @@ import {userCartReducer} from "./cart/store/cart.reducers";
       [FeatureKeys.productList]: productReducer,
       [FeatureKeys.userCart]: userCartReducer
     }),
-    // StoreDevtoolsModule.instrument({
-    //   maxAge: 25, // Retains last 25 states
-    // }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
     EffectsModule.forRoot([ProductEffects, CartEffects]),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

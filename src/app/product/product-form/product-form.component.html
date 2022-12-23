@@ -1,0 +1,53 @@
+<form [formGroup]="newProductForm">
+  <div class="main-container">
+    <label for="image">
+      Image URL:
+    </label>
+    <input id="image" type="text" formControlName="image">
+
+    <label for="modelShot">
+      Model Shot Image URL:
+    </label>
+    <input id="modelShot" type="text" formControlName="modelShot">
+
+
+    <label for="title">
+      Title:
+    </label>
+    <input id="title" type="text" formControlName="title">
+
+
+    <label for="description">
+      Description:
+    </label>
+    <input id="description" type="text" formControlName="description">
+
+
+    <label for="color">
+      Color:
+    </label>
+    <input id="color" type="text" formControlName="color">
+
+
+    <label for="category">
+      Category:
+    </label>
+    <input id="category" type="text" formControlName="category">
+
+
+    <div class="price-container" formGroupName="price">
+      <label for="current-price">
+        Current Price:
+      </label>
+      <input id="current-price" type="text" formControlName="currentPrice">
+
+
+      <label for="old-price">
+        Old Price:
+      </label>
+      <input id="old-price" type="text" formControlName="oldPrice">
+
+    </div>
+    <button type="button" class="add-product-btn" (click)="onAddProductClicked()">Add Product</button>
+  </div>
+</form>

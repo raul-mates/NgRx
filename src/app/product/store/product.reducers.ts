@@ -1,6 +1,12 @@
 import {ProductModel} from "../../shared/models/product.model";
 import {createReducer, on} from "@ngrx/store";
-import {loadProducts, loadProductsFailure, loadProductsSuccess} from "./product.actions";
+import {
+  addProduct,
+  deleteProduct,
+  loadProducts,
+  loadProductsFailure,
+  loadProductsSuccess
+} from "./product.actions";
 
 export interface ProductsState {
   products: ProductModel[];
@@ -19,16 +25,37 @@ export const productReducer = createReducer(
 
   on(loadProducts, (state) => ({...state, status: 'loading'})),
 
-  on(loadProductsSuccess, (state, { products }) => ({
-    ...state,
-    products: products,
-    error: null,
-    status: 'success'
-  })),
+  on(loadProductsSuccess, (state, {products}) => {
+    return {
+      ...state,
+      products: products,
+      error: null,
+      status: 'success'
+    }
+  }),
 
-  on(loadProductsFailure, (state, { error }) => ({
+  on(loadProductsFailure, (state, {error}) => ({
     ...state,
     error: error,
     status: 'error',
+  })),
+
+  on(addProduct, (state, {productDetails}) => {
+    let product = {...productDetails}
+    product.id = state.products.length + 1;
+
+    return {
+      ...state,
+      products: [...state.products, product],
+      error: null,
+      status: 'success'
+    }
+  }),
+
+  on(deleteProduct, (state, { id }) => ({
+    ...state,
+    products: state.products.filter(product => product.id !== id),
+    error: null,
+    status: 'success'
   }))
 )

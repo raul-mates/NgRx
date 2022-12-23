@@ -24,3 +24,19 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.button-pateu {
+  background: red;
+  color: #fff;
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.option-container {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  gap: 2.5px;
+  margin: 30px auto 0 auto;
+}

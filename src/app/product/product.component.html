@@ -1,15 +1,28 @@
 <ng-container *ngIf="products.length > 0">
+
+  <div class="option-container">
+    <ng-container *ngIf="formGroup">
+      <form [formGroup]="formGroup">
+        <select *ngFor="let filter of filters" formControlName="{{ 'filterBy' + filter.name }}">
+          <option *ngFor="let option of filter.options" [selected]="option === 'all'"
+                  value="{{option}}">{{option}}</option>
+        </select>
+      </form>
+    </ng-container>
+  </div>
+
   <div class="flex-container">
-    <div class="container" *ngFor="let product of products">
+    <div class="container" *ngFor="let product of clonedProducts" data-id="{{product.id}}">
       <div style="margin: 0; padding: 0; height: 360px">
         <img src="{{product.image}}" alt="{{product.title}}" width="360" height="360">
       </div>
 
       <div class="details">
+        <h4 class="description" style="margin-bottom: 20px">{{product.title}}</h4>
         <p class="description">{{product.description}}</p>
-        <p>{{product.category}}</p>
         <p>{{product.color}}</p>
-        <p>{{product.price.currentPrice}}</p>
+        <p><strong>{{product.price.currentPrice}}</strong></p>
+        <button class="button-pateu" type="button" (click)="removeProduct(product.id)">Remove Product</button>
       </div>
     </div>
   </div>

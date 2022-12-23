@@ -1,3 +1,5 @@
 <div class="navigation">
+  <a (click)="onAddProductClick(addBtn)" #addBtn class="add-button">Add Product</a>
+  <input class="search" type="text" #input (input)="userInputValue(input)">
   <app-cart></app-cart>
 </div>

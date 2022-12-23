@@ -14,3 +14,13 @@ export const loadProductsFailure = createAction(
   '[Product API] Load Products Failed',
   props<{ error: string }>()
 )
+
+export const addProduct = createAction(
+  '[Product Component] Add Product',
+  props<{ productDetails: ProductModel }>()
+)
+
+export const deleteProduct = createAction(
+  '[Product Component] Delete Product',
+  props<{ id: number }>()
+)
